@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[project]
+name = "markitdown-advanced-pdf-llm-plugin"
+dynamic = ["version"]
+description = "3-rd party plugin for markitdown library. It is to be used for converting a pdf to markdown purely based on llm's capability"
+authors = [
+    {name = "AjjayK",email = "152945777+preciousjunk01@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "markitdown>=0.1.1",
+    "pypdf>=5.4.0",
+    "pillow>=11.2.1",
+    "PyMuPDF>=1.25.0" 
+
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+
+[tool.hatch.version]
+path = "src/markitdown_advanced_pdf_llm/__about__.py"
+
+[project.entry-points."markitdown.plugin"]
+advanced_pdf = "markitdown_advanced_pdf_llm"
+
+[tool.coverage.paths]
+markitdown-sample-plugin = ["src/markitdown_advanced_pdf_llm", "*/markitdown-advanced-pdf-llm/src/markitdown_advanced_pdf_llm"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/markitdown_advanced_pdf_llm"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/markitdown_advanced_pdf_llm"]

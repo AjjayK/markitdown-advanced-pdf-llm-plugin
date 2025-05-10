@@ -165,7 +165,7 @@ class SimpleLLMKnowledgeExtractor(DocumentConverter):
         ## Identify and Preserve All Content
         - If you find text, return the text unmodified
         - If you find a table, extract and return the table with same structure
-        - If you find a chart, interpret the chart and describe it in clear terms.
+        - If you find a chart or picture, interpret the chart or picture and describe it in clear terms.
 
         ## No Omissions
         - Do not leave out any relevant information from the document.

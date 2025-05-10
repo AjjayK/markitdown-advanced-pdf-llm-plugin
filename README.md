@@ -11,5 +11,38 @@ MarkItDown is a lightweight Python utility for converting various files to Markd
 - RAG output quality: The quality of LLMs output degrades as input token increases. Passing several pages of multi-modal document at once can lead to poor LLM summarization than several pages of text documents 
 - Latency: Text only input has lesser latency than multi-modal input
 
-### Example page from a document where plugin is beneficial
+## What it does?
+### SimpleLLMKnowledgeExtractor
+- Converts each PDF page to both a standalone PDF and an image
+- prompts LLM (presently only OpenAI Client) to extract all text, tables, and picture information
+- Processes pages concurrently for improved performance
+- Generates a complete markdown document with both extracted content and adds page image
+
+### Future Extractor (In Progress)
+Current approach of sending full pages to LLMs sometimes results in incomplete extraction or information loss. Future extractor's goal is to 
+- Make the extraction more deterministic by extracting each element (text, table and picture) using libraries like PyMuPDF4LLM
+- Validate the deterministic extraction performed well using LLM
+- Apply LLM extraction if needed
+
+### Example page from a document where this plugin is beneficial
 ![Screenshot 2025-05-04 184336](https://github.com/user-attachments/assets/080d24fd-a849-475a-919d-f28eba498dbe)
+
+## Installation
+The plugin is available for installation through pip
+
+```
+pip install markitdown-advanced-pdf-llm-plugin
+```
+
+## Usage
+```
+from markitdown import MarkItDown
+from openai import OpenAI
+
+client = OpenAI(api_key="openai-key")
+
+md = MarkItDown(enable_plugins=True, llm_client=openai_client, llm_model="prefered-model") # Incase custom prompt, use arg 'llm_prompt'
+result = md.convert("doc.pdf")
+
+markdown_content = result.markdown
+```

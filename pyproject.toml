@@ -8,7 +8,7 @@ name = "markitdown-advanced-pdf-llm-plugin"
 dynamic = ["version"]
 description = "3-rd party plugin for markitdown library. It is to be used for converting a pdf to markdown purely based on llm's capability"
 authors = [
-    {name = "AjjayK",email = "152945777+preciousjunk01@users.noreply.github.com"}
+    {name = "AjjayK",email = "ajjay.kanna@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -45,3 +45,6 @@ only-include = ["src/markitdown_advanced_pdf_llm"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/markitdown_advanced_pdf_llm"]
+
+[project.urls]
+"repo" = "https://github.com/AjjayK/markitdown-advanced-pdf-llm-plugin"
